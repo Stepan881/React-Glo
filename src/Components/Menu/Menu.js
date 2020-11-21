@@ -10,7 +10,6 @@ const MenuStyled = styled.main`
   margin-top: 80px;
   margin-left: 380px;
 `;
-
 const SectionStyled = styled.section`
   padding: 30px;
 `;

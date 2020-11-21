@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import trashImage from '../../img/trash.svg';
 
+import {totalPriceItems} from '../Modal/ModalItem';
+import {convertToPrice} from '../Functions/secondaryFunction';
+
 const OrderItemStyled = styled.li`
   display: flex;
   margin: 15px 0;
 `;
-
 const TrashButton = styled.button`
   width: 24px;
   height: 24px;
@@ -17,12 +19,10 @@ const TrashButton = styled.button`
   background-repeat: no-repeat;
  
 `;
-
 const ItemName = styled.span`
   flex-grow: 1;
   
 `;
-
 const ItemPrice = styled.span`
   margin-left: 20px;
   margin-right: 10px;
@@ -35,8 +35,8 @@ export const OrderListItem = ({order}) => {
   return (
     <OrderItemStyled>
       <ItemName>{order.name}</ItemName>
-      <span>1</span>
-      <ItemPrice>{order.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</ItemPrice>
+      <span>{order.count}</span>
+      <ItemPrice>{convertToPrice(totalPriceItems(order))}</ItemPrice>
       <TrashButton />
     </OrderItemStyled>
   );
