@@ -14,17 +14,23 @@ const SectionStyled = styled.section`
   padding: 30px;
 `;
 
-export const Menu = () => (
+export const Menu = ({setOpenItem}) => (
   <MenuStyled>
     <Banner />
     <SectionStyled>
       <h2>Бургеры</h2>
-      <ListItem itemList={DBMenu.burger}/>
+      <ListItem
+        itemList={DBMenu.burger}
+        setOpenItem={setOpenItem}
+      />
     </SectionStyled>
 
     <SectionStyled>
       <h2>Закуски / Напитки</h2>
-      <ListItem itemList={DBMenu.other}/>
+      <ListItem
+        itemList={DBMenu.other}
+        setOpenItem={setOpenItem}
+      />
     </SectionStyled>
   </MenuStyled>
-);  
+);
