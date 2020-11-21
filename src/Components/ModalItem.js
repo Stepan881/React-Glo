@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {ButtonCheckout} from './ButtonCheckout';
+
+
 const Overlay = styled.div`
   position: fixed;
   display: flex;
@@ -46,15 +49,7 @@ const Price = styled.p`
       font-family: Pacifico,sans-serif;
 `;
 
-const Btn = styled.button`
-  width: 320px;
-  margin: 0 auto 50px;
-  padding: 9px 15px;
-  background: #299b01;
-  border: none;
-  color: white;
 
-`;
 
 export const ModalItem = ({openItem, setOpenItem}) => {
 
@@ -74,7 +69,9 @@ export const ModalItem = ({openItem, setOpenItem}) => {
           <Head>{openItem.name}</Head>
           <Price>{openItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</Price>
         </Wrapper>
-        <Btn>Добавить</Btn>
+        <ButtonCheckout>
+          Добавить
+        </ButtonCheckout>
       </Modal>
     </Overlay>
   );
