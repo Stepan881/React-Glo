@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import {OrderListItem} from './OrderListItem';
 import {ButtonCheckout} from '../Styleds/ButtonCheckout';
-import {totalPriceItems} from '../Modal/ModalItem';
-import {convertToPrice} from '../Functions/secondaryFunction';
+import {convertToPrice, totalPriceItems} from '../Functions/secondaryFunction';
 
 const OrderStyled = styled.section`
   display: flex;
@@ -13,10 +12,11 @@ const OrderStyled = styled.section`
   top: 80px;
   left: 0;
   background: #fff;
-  min-width: 380px;
+  width: 380px;
   height: calc(100% - 80px); 
   box-shadow: 3px  4px 5px rgba(0, 0, 0, .3);
   padding: 20px;
+  
 `;
 const OrderTitle = styled.h2`
   text-align: center;
@@ -47,7 +47,7 @@ const EntryList = styled.p`
 export const Order = ({orders}) => {
 
   const total = orders.reduce((res, order) => totalPriceItems(order) + res, 0);
-
+  const totalCounter = orders.reduce((res, order) => order.count + res, 0);
   return (
     <OrderStyled>
       <OrderTitle>ВАШ ЗАКАЗ</OrderTitle>
@@ -60,7 +60,7 @@ export const Order = ({orders}) => {
         </OrderContent>
       <Total>
         <span>И того</span>
-        <span>0</span>
+        <span>{totalCounter}</span>
         <TotalPrice>{convertToPrice(total)}</TotalPrice>
       </Total>
       <ButtonCheckout>Оформить</ButtonCheckout>

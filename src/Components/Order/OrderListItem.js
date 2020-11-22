@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import trashImage from '../../img/trash.svg';
 
-import {totalPriceItems} from '../Modal/ModalItem';
+import {totalPriceItems} from '../Functions/secondaryFunction';
 import {convertToPrice} from '../Functions/secondaryFunction';
 
 const OrderItemStyled = styled.li`
   display: flex;
   margin: 15px 0;
+  flex-wrap: wrap;
 `;
 const TrashButton = styled.button`
   width: 24px;
@@ -29,15 +30,24 @@ const ItemPrice = styled.span`
   min-width: 65px;
   text-align: right;
 `;
-
+const Toppings = styled.div`
+  color: #9a9a9a;
+  font-size: 14px;
+  width: 100%;
+`;
 
 export const OrderListItem = ({order}) => {
+  const topping  = order.topping.filter(item => item.checked)
+    .map(item => item.name)
+    .join(', ');
+
   return (
     <OrderItemStyled>
       <ItemName>{order.name}</ItemName>
       <span>{order.count}</span>
       <ItemPrice>{convertToPrice(totalPriceItems(order))}</ItemPrice>
       <TrashButton />
+      {topping && <Toppings>Допы: {topping}</Toppings>}
     </OrderItemStyled>
   );
 }
