@@ -15,7 +15,6 @@ const ToppingsLabel = styled.label`
 `;
 const ToppingsCheckbox = styled.input`
   cursor: pointer;
-  margin-right: 5px;
   margin: 7px;
 `;
 
